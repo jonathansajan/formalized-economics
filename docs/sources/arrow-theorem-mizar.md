@@ -5,5 +5,5 @@
 - Main result: early formalization of Arrow's theorem.
 - Source: <https://www.cs.ru.nl/~freek/pubs/arrow.pdf>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/Mizar/SocialChoice/ArrowMizar.lean`
+- Econlib placeholder: `econlib/Mizar/SocialChoice/ArrowMizar.lean`
 - Econlib status: historical cross-system inspiration placeholder only.

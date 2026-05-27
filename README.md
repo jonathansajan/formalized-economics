@@ -5,7 +5,7 @@ Econlib-style library in modern Lean 4.
 
 The current goal is structure first: one canonical `main` branch, one visible
 source-language-first library skeleton, and clearly separated source archives.
-Many `Econlib/` files are placeholders and do not yet contain completed
+Many `econlib/` files are placeholders and do not yet contain completed
 formalizations.
 
 Long term, the aim is to translate or adapt the useful material into a clean
@@ -15,21 +15,21 @@ formal-methods sources are already modern Lean 4.
 
 ## Repository Layout
 
-- `Econlib/` contains source-language-first placeholders for future Econlib work.
+- `econlib/` contains source-language-first placeholders for future Econlib work.
 - `docs/` contains the human-readable map, topic notes, source summaries, and roadmap.
 - `references/` contains original external papers, source archives, and downloaded code.
 
 Original external code stays under `references/`. Cleaned or rewritten
-Econlib-facing work is planned under `Econlib/`, with Lean 4 as the final target.
+Econlib-facing work is planned under `econlib/`, with Lean 4 as the final target.
 
 ## Current Source Systems
 
-- `Econlib/Lean4/`: material already identified as Lean 4.
-- `Econlib/Lean3/`: older or not-yet-confirmed Lean material.
-- `Econlib/IsabelleHOL/`: Isabelle/HOL sources and AFP entries.
-- `Econlib/CoqRocq/`: Coq/Rocq sources.
-- `Econlib/Mizar/`: Mizar sources.
-- `Econlib/Other/`: relevant formal-methods sources that do not fit the above.
+- `econlib/Lean4/`: material already identified as Lean 4.
+- `econlib/Lean3/`: older or not-yet-confirmed Lean material.
+- `econlib/IsabelleHOL/`: Isabelle/HOL sources and AFP entries.
+- `econlib/CoqRocq/`: Coq/Rocq sources.
+- `econlib/Mizar/`: Mizar sources.
+- `econlib/Other/`: relevant formal-methods sources that do not fit the above.
 
 ## Current Domains
 

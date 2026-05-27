@@ -5,5 +5,5 @@
 - Main result: strategies, utility profiles, utility functions, and game-theoretic concepts.
 - Source: <https://github.com/MixedMatched/formalizing-game-theory>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/Lean4/GameTheory/FormalizingGameTheory.lean`
+- Econlib placeholder: `econlib/Lean4/GameTheory/FormalizingGameTheory.lean`
 - Econlib status: source not yet reviewed; placeholder only.

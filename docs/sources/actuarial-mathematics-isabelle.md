@@ -5,5 +5,5 @@
 - Main result: insurance and actuarial finance formalization.
 - Source: <https://isa-afp.org/entries/Actuarial_Mathematics.html>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/IsabelleHOL/FinancialEconomics/ActuarialMathematics.lean`
+- Econlib placeholder: `econlib/IsabelleHOL/FinancialEconomics/ActuarialMathematics.lean`
 - Econlib status: cross-system inspiration placeholder only.

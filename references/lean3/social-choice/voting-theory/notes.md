@@ -73,7 +73,7 @@ Important topic areas in the original code:
 
 - The downloaded Lean code repository does not appear to include a `LICENSE` file.
 - The arXiv source package does not appear to include a separate license file.
-- Before copying or adapting substantial Lean code into `Econlib/`, the code license should be confirmed from the authors or repository maintainers.
+- Before copying or adapting substantial Lean code into `econlib/`, the code license should be confirmed from the authors or repository maintainers.
 
 ## Notes
 

@@ -65,8 +65,8 @@ Important topic areas in the original code:
 
 - The paper source includes a `LICENSE.md` file for the LaTeX source package and `main.tex` notes a CC-BY publication license.
 - The downloaded Lean code repository does not appear to include a `LICENSE` file.
-- Before copying or adapting substantial Lean code into `Econlib/`, the code license should be confirmed from the authors or repository maintainers.
+- Before copying or adapting substantial Lean code into `econlib/`, the code license should be confirmed from the authors or repository maintainers.
 
 ## Notes
 
-This folder stores the original downloaded material for the AMM Lean 4 topic. The files here should stay close to the source versions. Cleaned or rearranged Econlib-facing work should happen later under an appropriate `Econlib/` topic area.
+This folder stores the original downloaded material for the AMM Lean 4 topic. The files here should stay close to the source versions. Cleaned or rearranged Econlib-facing work should happen later under an appropriate `econlib/` topic area.

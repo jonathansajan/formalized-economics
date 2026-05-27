@@ -33,4 +33,4 @@ The downloaded code includes an Apache License 2.0 `LICENSE` file. This permits 
 
 ## Notes
 
-This folder stores the original downloaded material for Topic 1. The files here should stay close to the source version. Cleaned or rearranged Econlib-facing work should happen under `Econlib/DecisionTheory/`.
+This folder stores the original downloaded material for Topic 1. The files here should stay close to the source version. Cleaned or rearranged Econlib-facing work should happen under `econlib/Lean4/DecisionTheory/`.

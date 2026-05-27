@@ -5,5 +5,5 @@
 - Main result: AMMs with fees, monotonicity, additivity failure, and arbitrage uniqueness.
 - Source: <https://arxiv.org/abs/2602.00101>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/Lean4/FinancialEconomics/AMMFeeMechanisms.lean`
+- Econlib placeholder: `econlib/Lean4/FinancialEconomics/AMMFeeMechanisms.lean`
 - Econlib status: source not yet reviewed; placeholder only.

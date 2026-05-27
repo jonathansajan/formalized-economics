@@ -1,1 +1,23 @@
+# macOS / OS junk
 .DS_Store
+._*
+Thumbs.db
+
+# Editor / IDE state
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Lean / Lake build outputs
+.lake/
+build/
+.lake-packages/
+*.olean
+*.ilean
+*.c
+*.h
+
+# Local caches and logs
+.cache/
+*.log

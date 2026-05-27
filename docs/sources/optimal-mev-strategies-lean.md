@@ -5,5 +5,5 @@
 - Main result: MEV bounds and sandwich-attack optimality for AMMs.
 - Source: <https://arxiv.org/abs/2510.14480>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/Lean3/FinancialEconomics/OptimalMEVStrategies.lean`
+- Econlib placeholder: `econlib/Lean3/FinancialEconomics/OptimalMEVStrategies.lean`
 - Econlib status: source not yet reviewed; placeholder only.

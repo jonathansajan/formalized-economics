@@ -5,5 +5,5 @@
 - Main result: statistical learning theory with a least-squares regression application.
 - Source: <https://github.com/YuanheZ/lean-stat-learning-theory>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/Lean4/Econometrics/StatisticalLearningTheory.lean`
+- Econlib placeholder: `econlib/Lean4/Econometrics/StatisticalLearningTheory.lean`
 - Econlib status: source not yet reviewed; placeholder only.

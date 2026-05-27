@@ -5,5 +5,5 @@
 - Main result: derivative pricing, Cox-Ross-Rubinstein model, martingales, and filtrations.
 - Source: <https://isa-afp.org/entries/DiscretePricing.html>
 - Local references: not archived yet.
-- Econlib placeholder: `Econlib/IsabelleHOL/FinancialEconomics/DiscretePricing.lean`
+- Econlib placeholder: `econlib/IsabelleHOL/FinancialEconomics/DiscretePricing.lean`
 - Econlib status: cross-system inspiration placeholder only.

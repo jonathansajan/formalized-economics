@@ -2,7 +2,7 @@
 
 The repository separates three different jobs.
 
-## `Econlib/`
+## `econlib/`
 
 The working Econlib skeleton. The final goal is Lean 4, but the current layout
 is source-language-first:
