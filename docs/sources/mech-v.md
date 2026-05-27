@@ -5,4 +5,5 @@
 - Main result: VCG, first/second price auctions, truthfulness, dominance, rationality, Nash, and Pareto concepts.
 - Source: <https://github.com/jouvelot/mech.v>
 - Local references: not archived yet.
+- Econlib placeholder: `Econlib/CoqRocq/MechanismDesign/MechV.lean`
 - Econlib status: cross-system inspiration placeholder only.

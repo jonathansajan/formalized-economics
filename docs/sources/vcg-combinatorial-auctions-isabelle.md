@@ -5,4 +5,5 @@
 - Main result: VCG allocation, pricing, tie-breaking, non-negative prices, and code extraction.
 - Source: <https://isa-afp.org/entries/Vickrey_Clarke_Groves.html>
 - Local references: not archived yet.
+- Econlib placeholder: `Econlib/IsabelleHOL/MechanismDesign/VCGCombinatorialAuctions.lean`
 - Econlib status: cross-system inspiration placeholder only.

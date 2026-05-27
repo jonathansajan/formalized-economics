@@ -8,4 +8,5 @@ This folder is the human-readable map for the project.
 - `roadmap.md` describes the staged path from map to Lean 4 library.
 
 The documentation may discuss Lean, Isabelle/HOL, Coq/Rocq, Mizar, and other
-systems. Only cleaned Lean 4-facing work should go under `Econlib/`.
+systems. `Econlib/` currently keeps placeholders grouped by source language;
+the long-term target is cleaned Lean 4 work.

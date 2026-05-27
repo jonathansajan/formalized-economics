@@ -3,7 +3,7 @@
 ## Stage 1: Structure
 
 - Keep `main` as the canonical repository.
-- Add the full domain-level Econlib skeleton.
+- Add the full source-language-first Econlib skeleton.
 - Add one documentation entry per mapped source.
 - Preserve collected source material under `references/`.
 
@@ -18,6 +18,8 @@
 - Choose and install the Lean 4/Lake toolchain.
 - Add build metadata only after the toolchain choice is clear.
 - Keep source archives separate from buildable Econlib files.
+- Treat non-Lean-4 placeholders as translation or adaptation targets, not as
+  completed Lean 4 code.
 
 ## Stage 4: First Formalization
 

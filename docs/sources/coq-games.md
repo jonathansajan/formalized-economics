@@ -5,4 +5,5 @@
 - Main result: potential games, Nash equilibria, coarse correlated equilibria, dynamics, and prices of anarchy/stability.
 - Source: <https://jfr.unibo.it/article/view/7235>
 - Local references: not archived yet.
+- Econlib placeholder: `Econlib/CoqRocq/GameTheory/CoqGames.lean`
 - Econlib status: cross-system inspiration placeholder only.

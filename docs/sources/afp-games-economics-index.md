@@ -5,4 +5,5 @@
 - Main result: source hub for Isabelle game-theoretic, economics, finance, and social-choice entries.
 - Source: <https://isa-afp.org/topics/mathematics/games-and-economics/>
 - Local references: not archived yet.
+- Econlib placeholder: `Econlib/IsabelleHOL/Meta/AFPGamesAndEconomics.lean`
 - Econlib status: source-discovery reference only.

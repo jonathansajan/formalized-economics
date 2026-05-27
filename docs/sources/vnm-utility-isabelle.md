@@ -5,4 +5,5 @@
 - Main result: lotteries, expected utility, continuity, independence, and vNM theorem.
 - Source: <https://isa-afp.org/entries/Neumann_Morgenstern_Utility.html>
 - Local references: not archived yet.
+- Econlib placeholder: `Econlib/IsabelleHOL/DecisionTheory/VNMUtilityTheoremIsabelle.lean`
 - Econlib status: cross-system inspiration placeholder only.
