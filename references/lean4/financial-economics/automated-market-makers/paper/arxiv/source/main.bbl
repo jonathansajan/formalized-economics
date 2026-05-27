@@ -1,0 +1,73 @@
+\begin{thebibliography}{10}
+
+\bibitem{virtualAMMbalances}
+Improving frontrunning resistance of x*y=k market makers, 2018.
+\newblock \url{https://ethresear.ch/t/improving-front-running-resistance-of-x-y-k-market-makers/1281}.
+
+\bibitem{balancerpaper}
+Balancer whitepaper, 2019.
+\newblock \url{https://balancer.finance/whitepaper/ }.
+
+\bibitem{moonipaper}
+Mooniswap whitepaper, 2020.
+\newblock \url{https://mooniswap.exchange/docs/MooniswapWhitePaper-v1.0.pdf}.
+
+\bibitem{Angeris20aft}
+Guillermo Angeris and Tarun Chitra.
+\newblock Improved price oracles: Constant function market makers.
+\newblock In {\em {ACM} Conference on Advances in Financial Technologies ({AFT})}, pages 80--91. {ACM}, 2020.
+\newblock \url{https://arxiv.org/abs/2003.10001}.
+\newblock \href {https://doi.org/10.1145/3419614.3423251} {\path{doi:10.1145/3419614.3423251}}.
+
+\bibitem{Angeris21analysis}
+Guillermo Angeris, Hsien-Tang Kao, Rei Chiang, Charlie Noyes, and Tarun Chitra.
+\newblock An analysis of {Uniswap} markets.
+\newblock {\em Cryptoeconomic Systems}, 1(1), 2021.
+\newblock \href {https://doi.org/10.21428/58320208.c9738e64} {\path{doi:10.21428/58320208.c9738e64}}.
+
+\bibitem{Annenkov20cpp}
+Danil Annenkov, Jakob~Botsch Nielsen, and Bas Spitters.
+\newblock Concert: a smart contract certification framework in {Coq}.
+\newblock In {\em {ACM} {SIGPLAN} International Conference on Certified Programs and Proofs ({CPP})}, pages 215--228. {ACM}, 2020.
+\newblock \href {https://doi.org/10.1145/3372885.3373829} {\path{doi:10.1145/3372885.3373829}}.
+
+\bibitem{Bartoletti_2022}
+Massimo Bartoletti, James~Hsin yu~Chiang, and Alberto Lluch-Lafuente.
+\newblock A theory of automated market makers in {DeFi}.
+\newblock {\em Logical Methods in Computer Science}, Volume 18, Issue 4, dec 2022.
+\newblock URL: \url{https://doi.org/10.46298%2Flmcs-18%284%3A12%292022}, \href {https://doi.org/10.46298/lmcs-18(4:12)2022} {\path{doi:10.46298/lmcs-18(4:12)2022}}.
+
+\bibitem{certora-compound-v2}
+Certora.
+\newblock Formal verification of {Compound}'s open-oracle with {Uniswap} anchor.
+\newblock \url{https://files.safe.de.fi/safe/files/audit/pdf/CompoundUniswapAnchoredOpenOracleAug2020.pdf}, 2020.
+
+\bibitem{curvepaper}
+Michael Egorov.
+\newblock Stableswap - efficient mechanism for stablecoin, 2019.
+\newblock \url{https://curve.fi/files/stableswap-paper.pdf}.
+
+\bibitem{certora-compound-v3}
+Uri Kirstein.
+\newblock Detecting corner cases in {Compound V3} with formal specifications.
+\newblock \url{https://medium.com/certora/detecting-corner-cases-in-compound-v3-with-formal-specifications-b7abf137fb15}, 2022.
+
+\bibitem{Krishnamachari2021fab}
+Bhaskar Krishnamachari, Qi~Feng, and Eugenio Grippo.
+\newblock Dynamic curves for decentralized autonomous cryptocurrency exchanges.
+\newblock In {\em International Symposium on Foundations and Applications of Blockchain ({FAB})}, volume~92 of {\em OASIcs}, pages 5:1--5:14. Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik, 2021.
+\newblock \href {https://doi.org/10.4230/OASIcs.FAB.2021.5} {\path{doi:10.4230/OASIcs.FAB.2021.5}}.
+
+\bibitem{Nielsen23cpp}
+Eske~Hoy Nielsen, Danil Annenkov, and Bas Spitters.
+\newblock Formalising decentralised exchanges in {Coq}.
+\newblock In {\em {ACM} {SIGPLAN} International Conference on Certified Programs and Proofs ({CPP})}, pages 290--302. {ACM}, 2023.
+\newblock \href {https://doi.org/10.1145/3573105.3575685} {\path{doi:10.1145/3573105.3575685}}.
+
+\bibitem{Xu23csur}
+Jiahua Xu, Krzysztof Paruch, Simon Cousaert, and Yebo Feng.
+\newblock Sok: Decentralized exchanges {(DEX)} with automated market maker {(AMM)} protocols.
+\newblock {\em {ACM} Comput. Surv.}, 55(11):238:1--238:50, 2023.
+\newblock \href {https://doi.org/10.1145/3570639} {\path{doi:10.1145/3570639}}.
+
+\end{thebibliography}

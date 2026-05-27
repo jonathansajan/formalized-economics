@@ -1,0 +1,110 @@
+\section{Related work}
+\label{sec:related}
+
+The closest work to ours is~\cite{Nielsen23cpp},
+which proposes a methodology for developing and verifying AMMs in the Coq proof assistant. 
+In this approach, an AMM is decomposed into multiple interacting smart contract:
+\eg, each minted token is modelled as a single smart contract,
+following way fungible tokens are encoded 
+in blockchains platforms that do not provide custom tokens natively,
+as \eg in Ethereum and Tezos.
+These smart contracts are then implemented as Coq functions on top of 
+ConCert~\cite{Annenkov20cpp}, a generic model of blockchain platforms and smart contracts mechanized in Coq.
+Concert is used to verify behavioural properties of smart contracts,
+either in isolation or composed with other smart contracts:
+this is fundamental for~\cite{Nielsen23cpp}, 
+where AMMs are specified as compositions of multiple contracts. 
+
+More specifically, \cite{Nielsen23cpp} applies the proposed methodology to the Dexter2 protocol, which implements a constant-product AMM based on Uniswap v1
+on the Tezos blockchain%
+\footnote{\url{https://gitlab.com/dexter2tz/dexter2tz/-/tree/master/}}.
+The main properties of AMMs proved in~\cite{Nielsen23cpp} are correspondences
+between the state of AMMs and the sequences of transactions executed on the blockchain.
+In particular, they prove that:
+\begin{itemize}
+\item the balance recorded in the main AMM contract is coherent with the actual balance resulting from the execution of the sequence of transactions;
+\item the supply of the minted token recorded in the main AMM contract is equal to the actual supply resulting from the execution;
+\item the state of the minted token contract is coherent with the execution.
+\end{itemize}
+Furthermore, starting from the Coq specification of the Dexter2 AMM, \cite{Nielsen23cpp} 
+extracts verified CamlLigo code, which is directly deployable on the Tezos blockchain. 
+
+Although both our work and \cite{Nielsen23cpp} involve AMM formalizations within a proof assistant, the ultimate goals are quite different. 
+The formalization in~\cite{Nielsen23cpp} closely follows the concrete implementation of a particular AMM instance (Dexter2) and produces a deployable implementation 
+that is provably coherent with the proposed Coq specification. 
+By contrast, we start from a more abstract specification of AMM,
+with the goal of studying the properties that must be satisfied by any implementation coherent with the specification.
+%
+An advantage of our approach over~\cite{Nielsen23cpp} is that it provides a suitable level of abstraction where proving properties about the economic mechanisms of AMMs,
+\ie properties about the gain of users and of equilibria among users' strategies.
+In particular, \Cref{th:arbitsol} establishes a paradigmatic property of AMMs, which explains the economic mechanism underlying their design.
+
+Besides these main differences, our AMM model and that in~\cite{Nielsen23cpp}
+have several differences.
+A notable difference is that our model is based on Uniswap v2, while
+\cite{Nielsen23cpp} is based on Uniswap v1.
+% \daninote{these main differences ... a first main difference}
+In particular, this means that our AMMs can handle arbitrary token pairs, while 
+in Dexter2 any AMM pairs a token with the blockchain native crypto-currency. 
+
+At the best of our knowledge, \cite{Nielsen23cpp} and ours are currently 
+the only mechanized formalizations of AMMs in a proof assistant.
+Many other works study economic properties of AMMs that go beyond those proved in this paper. 
+%
+The works~\cite{Angeris21analysis} and~\cite{Angeris20aft} study, respectively, an AMM model based on Uniswap similar to ours, and a generalization of the model where the AMM is parameterised over a \emph{trading function} of the AMM reserves, which must remain constant before and after any swap transactions
+(in Uniswap v1 and v2, the trading function is just the product between the AMM reserves).
+%
+The work~\cite{Bartoletti_2022} studies another generalization of Uniswap v2, where the relation between input and output tokens of swap transactions is determined by an arbitrary \emph{swap rate function}, studying the properties of this function that give rise to a sound economic mechanism of AMMs. 
+%
+While both~\cite{Angeris20aft} and~\cite{Bartoletti_2022} share the common goal
+of providing general models of AMMs wherein to study their economic behaviour,
+they largely diverge on the formalization:
+\cite{Angeris20aft} is based on concepts related to convex optimization problems,
+while~\cite{Bartoletti_2022} borrows formalization and reasoning techniques from concurrency theory.
+%
+The Lean 4 model proposed in this paper follows 
+the formalization in~\cite{Bartoletti_2022}, which has the advantage of requiring far less mathematical dependencies: although Mathlib is equipped to reason about convex sets and functions\footnote{\url{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Convex/Function}}, it is currently lacking in advanced convex optimization definitions and results as those used in~\cite{Angeris20aft}.
+
+Our AMM model is based on Uniswap v2, one of the most successful AMMs so far.
+We briefly discuss some alternative AMM constructions.
+%
+Balancer~\cite{balancerpaper} generalizes the constant-product function
+used by Uniswap to a constant (weighted geometric) mean
+$f(r_1,\cdots,r_n) = \prod_{i=1}^n r_i^{w_i}$, 
+where the weight $w_i$ reflects the relevance of a token $\tau_i$
+in a tuple $(\tau_1,\cdots,\tau_n)$.
+% This still fits within the CFMM setting of~\cite{Angeris20aft},
+% thus inheriting its results about solvability 
+% of the arbitrage problem~\cite{Evans21fc}.
+%
+Curve~\cite{curvepaper} mixes constant-sum and constant-product functions,
+aiming at a swap rate with small fluctuations for large amounts of swapped tokens. 
+The work~\cite{Krishnamachari2021fab} studies a variant of the constant-product swap rate invariant, where the rate adjusts dynamically based on oracle prices, 
+with the goal of reducing the need for arbitrage transactions.
+% but at the cost of lower fee accrual.
+%
+Other approaches aiming at the same goal are studies in~\cite{virtualAMMbalances,Krishnamachari2021fab}, and implemented in~\cite{moonipaper}.
+%
+Extending our Lean formalization and results to these alternative AMM designs would require a substantial reworking of our model and proofs.
+
+% bart: rivedere pezzo sotto
+% There are several differences between our approach and that 
+% of \cite{Danos21defi}, besides the fact that we assume 
+% the same swap rate function for all AMMs, and a graph instead of a multi-graph
+% (\ie, we admit at most one AMM for each token pair).
+% A technical difference is that we assume that the amount $y$ of output 
+% tokens received for an amount $x$ of input tokens is given by
+% $y = \SX{x,\ammR[0],\ammR[1]} \cdot x$, whereas \cite{Danos21defi}
+% defines this amount as $y = f_{\ammR[0],\ammR[1]}(x)$.
+% This results in different structural properties for $\SX{x,\ammR[0],\ammR[1]}$
+% and $f(x)$ in order to achieve the desired behavioural properties of AMMs.
+% Having the AMM reserves $\ammR[0]$, $\ammR[1]$ as parameters of
+% our swap rate functions $\SX{}$ has a benefit, in that we can express
+% conditions which relate states before and after a transaction:
+% this is what happens, \eg, in the additivity, reversibility and homogeneity
+% properties (Definitions~\ref{def:sr-additivity},~\ref{def:sr-reversibility}
+% and~\ref{def:sr-homogeneity}).
+% As a consequence of this choice, compared to~\cite{Danos21defi} 
+% our theory encompasses also deposit and redeem actions, 
+% providing results that clarify how these actions interfere with swaps
+% (\eg, Theorems~\ref{thm:swap-after-dep}, \ref{thm:swap-after-rdm}, \ref{thm:dep-arbitrage}, and \ref{thm:rdm-arbitrage}).

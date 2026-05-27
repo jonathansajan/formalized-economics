@@ -1,0 +1,30 @@
+# Source Entries
+
+Each file records one mapped formalization source. These entries describe
+external work; they do not mean the work has already been adapted into Econlib.
+
+1. [vNM Utility Theorem in Lean 4](vnm-utility-lean4.md)
+2. [vNM Utility Theorem in Isabelle/HOL](vnm-utility-isabelle.md)
+3. [Microeconomics and First Welfare Theorem](first-welfare-theorem-isabelle.md)
+4. [Lean Social Choice](lean-social-choice.md)
+5. [Voting Theory in Lean](voting-theory-lean.md)
+6. [Arrow and Gibbard-Satterthwaite](arrow-gibbard-satterthwaite-isabelle.md)
+7. [Some Classical Results in Social Choice Theory](sen-social-choice-isabelle.md)
+8. [Randomised Social Choice Theory](randomised-social-choice-isabelle.md)
+9. [SD-Efficiency vs SD-Strategy-Proofness](sds-impossibility-isabelle.md)
+10. [Fishburn-Strategyproofness vs Pareto-Efficiency](fishburn-impossibility-isabelle.md)
+11. [Strategyproof Rank Aggregation](swf-impossibility-isabelle.md)
+12. [Nash Equilibria for Finite Games](nash-equilibrium-isabelle.md)
+13. [Formalizing Game Theory in Lean 4](formalizing-game-theory-lean4.md)
+14. [Coq Games / Algorithmic Game Theory Library](coq-games.md)
+15. [mech.v](mech-v.md)
+16. [Computer-aided Verification in Mechanism Design](computer-aided-mechanism-design.md)
+17. [VCG Combinatorial Auctions](vcg-combinatorial-auctions-isabelle.md)
+18. [Formalizing Automated Market Makers in Lean 4](automated-market-makers-lean4.md)
+19. [AMM Fee Mechanisms with Lean 4](amm-fee-mechanisms-lean4.md)
+20. [Certifying Optimal MEV Strategies with Lean](optimal-mev-strategies-lean.md)
+21. [Pricing in Discrete Financial Models](discrete-pricing-isabelle.md)
+22. [Actuarial Mathematics](actuarial-mathematics-isabelle.md)
+23. [Statistical Learning Theory in Lean 4](statistical-learning-theory-lean4.md)
+24. [Formalizing Arrow's Theorem in Mizar](arrow-theorem-mizar.md)
+25. [AFP Games and Economics Topic Page](afp-games-economics-index.md)

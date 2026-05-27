@@ -1,0 +1,49 @@
+% fix listings UTF-8
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+
+\definecolor{keywordcolor}{rgb}{0.7, 0.1, 0.1}   % red
+\definecolor{tacticcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+\definecolor{commentcolor}{rgb}{0.4, 0.4, 0.4}   % grey
+\definecolor{symbolcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+\definecolor{sortcolor}{rgb}{0.1, 0.5, 0.1}      % green
+\definecolor{attributecolor}{rgb}{0.7, 0.1, 0.1} % red
+\definecolor{white}{rgb}{1.0,1.0,1.0}
+
+\usepackage{xspace}
+\usepackage{nicefrac}
+\usepackage{caption}
+\captionsetup[table]{name=Listing}
+
+\usepackage{tikz}
+
+% For custom alignment in itemize and description
+\usepackage[inline,shortlabels]{enumitem} 
+\newlist{inlinelist}{enumerate*}{1}
+\setlist*[inlinelist,1]{%
+  label=(\roman*),
+}
+
+\def\lstlanguagefiles{lstlean.tex}
+% set default language
+\lstset{
+    language=lean,
+    numbers=left,
+    backgroundcolor=\color{white},
+    escapeinside={@}{@},
+    captionpos=t
+}
+
+% colors for links
+\hypersetup{
+    colorlinks=true,  
+    urlcolor=blue,
+}
+
+\usepackage[final,nomargin,inline,index]{fixme} % Simplified management of FIXME's
+\fxusetheme{color}
+\FXRegisterAuthor{bart}{anbart}{\color{magenta} {\underline{bart}}}
+\FXRegisterAuthor{dani}{andani}{\color{red} {\underline{dani}}}
+
+\usepackage{cleveref}
+\crefname{table}{Listing}{Listings}  

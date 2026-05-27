@@ -1,0 +1,24 @@
+\section{Introduction}
+\label{sec:intro}
+
+Automated Market Makers (AMMs) are one of the key applications in the Decentralized Finance (DeFi) ecosystem,
+as they allow users to trade crypto-assets without the need for trusted intermediaries~\cite{Xu23csur}. 
+Unlike traditional order-book exchanges, where buyers and sellers must find a counterpart, AMMs enable traders to autonomously swap assets deposited in liquidity pools contributed by other users, who are incentivized to provide liquidity by a complex reward mechanism. 
+At the time of writing, there are multiple AMM protocols controlling several billions of dollars worth of assets%
+\footnote{\url{https://defillama.com/protocols/Dexes}}. 
+This has made AMMs an appealing target for attacks, resulting in losses worth billions of dollars over time\footnote{\url{https://chainsec.io/defi-hacks/}}.
+
+The security of AMMs depends on several factors: besides the absence of traditional programming bugs, it is crucial that their economic mechanism gives rise to a rational behaviour of its users that aligns with the AMM ideal functionality, \ie providing an algorithmic exchange rate coherent with the one given by trusted price oracles. 
+%
+Therefore, it is important to obtain strong guarantees about the economic mechanisms of these protocols. 
+While formal verification tools for smart contracts based on model-checking are useful in detecting programming bugs and even in proving some structural properties of AMMs~\cite{certora-compound-v2,certora-compound-v3}, they are not suitable for verifying, or even expressing more complex properties regarding the economic mechanism of AMMs.
+These economic mechanisms have been studied in several research works, which, in most cases, provide pen-and-paper proofs of the obtained properties.
+Given the complexity of the studied models, it would be desirable to also provide machine-verified proofs, so that we may rely on the proven properties beyond any reasonable doubt. 
+To the best of our knowledge, existing mechanized formalizations~\cite{Nielsen23cpp} focus on verifying relevant structural properties of AMMs like their state consistency, and not on studying the economic mechanism of AMMs (see~\Cref{sec:related} for a detailed comparison).
+
+\paragraph*{Contributions}
+In this paper we formalize Automated Market Makers in the Lean 4 theorem prover.
+Our model is based on a slightly simplified version of the Uniswap v2 protocol (one of the leading AMMs), which was studied in~\cite{Bartoletti_2022} with a pen-and-paper formalization. We provide a Lean specification of blockchain states, abstracted from any factors that are immaterial to the study of AMMs. Then, we model the fundamental interactions that users may have with AMMs as well as the economic notions of price, networth and gain. Finally, we build machine-checked proofs of economic properties of constant-product AMMs. In particular, we derive an explicit formula for the economic gain obtained by a user after an exchange with an AMM. Building upon this formula we prove that, from a trader's perspective, aligning a constant-product AMM's internal exchange rate with the rate given by the trader's price oracle implies the optimal gain from that AMM. This results in the fundamental property of AMMs acting as price oracles themselves~\cite{Angeris20aft}. We then construct the optimal swap transaction that a rational user can perform to maximize their gain, solving the arbitrage problem. Our formalization and proofs\footnote{\url{https://github.com/danielepusceddu/lean4-amm}} are made available in a public GitHub repository.
+At the best of our knowledge, this is the first mechanized formalization of the economic mechanism of AMMs.
+We finally discuss some open issues, and alternative design choices for formalizing AMMs.
+

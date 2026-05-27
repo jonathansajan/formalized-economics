@@ -1,0 +1,31 @@
+\newcommand{\codefont}{\fontsize{10}{10}\selectfont}
+\newcommand{\code}[1]{{\tt\codefont {#1}}}
+
+\newcommand{\Eg}{E.g.\@\xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\wrt}{w.r.t.\@\xspace}
+\newcommand{\wwlog}{w.l.o.g.\@\xspace}
+\newcommand{\Wlog}{W.l.o.g.\@\xspace}
+
+\newcommand{\HSLtag}{\scalebox{1.25}{%
+  \begin{tikzpicture}
+  \draw (0.1,0.2) -- (0.2,0.115) -- (0.3,0.2) ;
+  %
+  \draw (0.1,0.2) -- (0.15,0.1) ;
+  \draw (0.3,0.2) -- (0.25,0.1) ;
+  %
+  \draw (0.12,0.1) -- (0.2,0.05) -- (0.28,0.1) ;
+  %
+  \draw (0.2,0) circle (0.12) ;
+  \draw (0.16,0.04) circle (0.01) ;
+  \draw (0.24,0.04) circle (0.01) ;
+  \draw (0.15,-0.07) -- (0.25,-0.07) ;
+  \end{tikzpicture}
+}}
+
+\newcommand{\HSLbox}{\rule{1ex}{1ex}}
+
+\newcommand{\HSL}[1][]{\vbox{\medskip\noindent\hrulefill \\[5pt]
+  \HSLtag \hspace{\stretch{1}}HIC SUNT
+  LEONES \; {#1}\hspace{\stretch{1}} \HSLtag \\ \smallskip\noindent\hrulefill \\}}

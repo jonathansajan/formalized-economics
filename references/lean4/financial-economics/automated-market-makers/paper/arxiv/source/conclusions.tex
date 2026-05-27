@@ -1,0 +1,30 @@
+\section{Conclusions}
+\label{sec:conclusions}
+In this work we have provided a formalization of AMMs in Lean. Blockchain states are represented as structures containing wallets and AMMs, and transactions as dependent types equipped with a function that defines the state resulting from firing the transaction. Based on this, we have modeled the key economic notions of price, networth and gain. We have then focused on the economic properties of AMMs, constructing machine-checkable proofs. In~\Cref{th:swapgain} we have given an explicit formula for the economic gain of a user after firing a swap transaction. In~\Cref{th:suffopt} we have proved that the rational strategy for traders leads to the alignment between the AMM internal exchange rate and that given by price oracles. Finally, in~\Cref{th:arbitsol} we have derived the amount of tokens that a trader should sell to maximize the gain from a constant-product AMM.
+
+\paragraph*{Design choices}
+Before coming up with our Lean formalization, we have experimented with a few alternative definitions.
+% , which eventually were discarded since they introduced unnecessary complications.
+%
+Currently, we use the two pairs of atomic token types $\left(\tau_0,\tau_1\right)$ and $\left(\tau_1, \tau_0\right)$ to represent the same minted token type. 
+Initially, we used the type $M$ of sets of atomic tokens of cardinality 2, and modeled wallets of minted tokens by the type $M \to_0 \mathbb R_{\geq 0}$. However, using $M$ in the definition of AMMs turned out not to be as easy. The type $M \to_0 \mathbb R_{\geq 0}^2$ would obviously not work since we would not know which value corresponds to the reserve of which token. On the other hand, the dependent type $\left(m: M\right) \to_0 \code{Option}\left(m \to \mathbb R_{>0}\right)$ would work after defining $0 := \code{None}$, at the cost of losing the straightforward definition for supply of atomic tokens.
+%
+We have opted for the custom subtype $\mathbb R_{>0}$ to represent the positive reals, since they simplify writing certain definitions and proof passages (\eg, avoiding the use of garbage outputs in the definitions where negative inputs would not make sense). 
+This choice however turned out to have some cons, since it makes using Mathlib more complex, and in some cases we have to coerce back to the reals anyway (\eg when reasoning about the gain).
+Using Mathlib's reals would perhaps lead to a smoother treatment.
+
+\paragraph*{Limitations}
+Compared to real-world AMM implementations, 
+our Lean formalization introduces a few simplifications, that overall contribute to keeping our proofs manageable. Bridging the gap with real AMMs would require several extensions, which we discuss below as directions for future work.
+%
+AMMs typically implement a trading fee $\phi \in [0,1]$ that represents the portion of the swap amount kept by the AMM. 
+While modeling the fee would be easy
+($\phi$ would be an additional parameter to $\code{SX}$ functions, to $\code{Swap}$ types, and to transactions $\code{Tx}$), it would require a major reworking of all the results that deal with swaps. 
+%
+Our swaps have \emph{zero-slippage}, in that either a swap gives exactly the amount of  tokens required by a user, or they are aborted. While on the one hand this is desirable (\eg, it rules out sandwich attacks), on the other hand it has drawbacks related to liveness, since a user may need to repeatedly send swap transactions until one is accepted. Real-world AMM implementations allow users to specify a slippage tolerance in the form of the minimum amount of tokens they expect from a swap. Extending our model to encompass slippage tolerance would require to add a parameter to each transaction type, and a minor reworking of the results.
+%
+% Our AMM pairs involve \emph{atomic} token types, while 
+Some AMM implementations allow users to create AMMs pairs involving \emph{minted} token types. Consequently, the tokens minted by these AMMs in general are ``nestings'' of token types. Extending our model in this direction would require 
+% a more complex formalization of minted tokens and of their price. The 
+% use of price oracles in our results should be replaced by this general price function. 
+to replace price oracles in our results with a suitable price function.

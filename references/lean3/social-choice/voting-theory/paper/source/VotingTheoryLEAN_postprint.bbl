@@ -1,0 +1,192 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{AgotnesVanDerHoekWooldridge2009}
+Agotnes, T., {van der Hoek}, W., Wooldridge, M.: On the logic of preference and
+  judgment aggregation. Autonomous Agents and Multi-Agent Systems
+  \textbf{22}(1),  4--30 (2009)
+
+\bibitem{Arrow1951}
+Arrow, K.J.: Social Choice and Individual Values. John Wiley \& Sons, Inc., New
+  York, 1st edn. (1951)
+
+\bibitem{Arrow2014}
+Arrow, K.J.: Origins of the impossibility theorem. In: Maskin, E., Sen, A.
+  (eds.) The {Arrow} Impossibility Theorem, pp. 143--148. Columbia University
+  Press, New York (2014)
+
+\bibitem{Avigad2021}
+Avigad, J., de~Moura, L., Kong, S.: Theorem Proving in Lean. Release 3.23.0
+  edn. (2021),
+  \url{https://leanprover.github.io/theorem_proving_in_lean/theorem_proving_in_lean.pdf}
+
+\bibitem{Baigent1987}
+Baigent, N.: Twitching weak dictators. Journal of Economics  \textbf{47}(4),
+  407--411 (1987)
+
+\bibitem{Blau1979}
+Blau, J.H.: Review of the article ``{R}epairing proofs of arrow's general
+  impossibility theorem and enlarging the scope of the theorem'' by {R}.
+  {R}outley. Mathematical Reviews  \textbf{0545435} (1979),
+  \url{https://mathscinet.ams.org/mathscinet-getitem?mr=545435}
+
+\bibitem{Blau1957}
+Blau, J.H.: The existence of social welfare functions. Econometrica
+  \textbf{25}(2),  302--313 (1957)
+
+\bibitem{Brandl2018}
+Brandl, F., Brandt, F., Eberl, M., Geist, C.: Proving the incompatibility of
+  efficiency and strategyproofness via {SMT} solving. Journal of the ACM
+  \textbf{65}(2),  6:1--6:28 (2018)
+
+\bibitem{Brandt2018b}
+Brandt, F., Eberl, M., Saile, C., Stricker, C.: The incompatibility of
+  fishburn-strategyproofness and pareto-efficiency. Archive of Formal Proofs
+  (2018), \url{https://isa-afp.org/entries/Fishburn_Impossibility.html}
+
+\bibitem{Brandt2018}
+Brandt, F., Saile, C., Stricker, C.: Voting with ties: Strong impossibilities
+  via {SAT} solving. In: Dastani, M., Sukthankar, G., Andr\'{e}, E., Koenig, S.
+  (eds.) Proceedings of the 17th International Conference on Autonomous Agents
+  and Multiagent Systems (AAMAS 2018). pp. 1285--1293. International Foundation
+  for Autonomous Agents and Multiagent Systems (2018)
+
+\bibitem{Campbell2000}
+Campbell, D.E., Kelly, J.S.: Weak independence and veto power. Economics
+  Letters  \textbf{66},  183--189 (2000)
+
+\bibitem{CinaEndriss2016}
+Cin\'a, G., Endriss, U.: Proving classical theorems of social choice theory in
+  modal logic. Autonomous Agents and Multi-Agent Systems  \textbf{30}(5),
+  963--989 (2016)
+
+\bibitem{Coquand1988}
+Coquand, T., Huet, G.: The calculus of constructions. Information and
+  Computation  \textbf{76}(2-3),  95--120 (1988)
+
+\bibitem{Lean}
+{de Moura}, L., Kong, S., Avigad, J., {van Doorn}, F., {von Raumer}, J.: The
+  {L}ean {T}heorem {P}rover. In: 25th International Conference on Automated
+  Deduction (CADE-25) (2015)
+
+\bibitem{Eberl2019}
+Eberl, M.: Verifying randomised social choice. In: International Symposium on
+  Frontiers of Combining Systems, FroCoS 2019. pp. 240--256 (2019)
+
+\bibitem{Endriss2011}
+Endriss, U.: Logic and social choice theory. In: Gupta, A., {van Benthem}, J.
+  (eds.) Logic and Philosophy Today, pp. 333--377. College Publications, London
+  (2011)
+
+\bibitem{Fishburn1977}
+Fishburn, P.C.: Condorcet social choice functions. SIAM Journal on Applied
+  Mathematics  \textbf{33}(3),  469--489 (1977)
+
+\bibitem{Gaertner2001}
+Gaertner, W.: Domain Conditions in Social Choice Theory. Cambridge University
+  Press, Cambridge (2001)
+
+\bibitem{Geanakoplos2005}
+Geanakoplos, J.: Three brief proofs of {Arrow}'s theorem. Economic Theory
+  \textbf{26}(1),  211--215 (2005)
+
+\bibitem{Geist2017}
+Geist, C., Peters, D.: Computer-aided methods for social choice theory. In:
+  Endriss, U. (ed.) Trends in Computational Social Choice. pp. 249--267. AI
+  Access (2017)
+
+\bibitem{GrandiEndriss2013}
+Grandi, U., Endriss, U.: First-order logic formalisation of impossibility
+  theorems in preference aggregation. Journal of Philosophical Logic
+  \textbf{42}(4),  595--618 (2013)
+
+\bibitem{HK2020}
+Holliday, W.H., Kelley, M.: A note on {M}urakami's theorems and incomplete
+  social choice without the {P}areto principle. Social Choice and Welfare
+  \textbf{55},  243--253 (2020)
+
+\bibitem{HollidayPacuit2020}
+Holliday, W.H., Pacuit, E.: {A}rrow's decisive coalitions. Social Choice and
+  Welfare  \textbf{54},  463--505 (2020)
+
+\bibitem{HP2020b}
+Holliday, W.H., Pacuit, E.: Split {C}ycle: {A} new {C}ondorcet consistent
+  voting method independent of clones and immune to spoilers (2020),
+  \href{https://arxiv.org/abs/2004.02350}{arXiv:2004.02350}
+
+\bibitem{HPSV2021}
+Holliday, W.H., Pacuit, E.: Stable {V}oting (2021),
+  \href{https://arxiv.org/abs/2108.00542}{arXiv:2108.00542}
+
+\bibitem{HP2020}
+Holliday, W.H., Pacuit, E.: Axioms for defeat in democratic elections. Journal
+  of Theoretical Politics  (Forthcoming),
+  \href{https://arxiv.org/abs/2008.08451}{arXiv:2008.08451}
+
+\bibitem{MartinLof1984}
+{Martin-L\"{o}f}, P.: Intuitionistic type theory. Bibliopolis, Napoli (1984)
+
+\bibitem{Murakami1968}
+Murakami, Y.: Logic and Social Choice. Dover Publications, New York (1968)
+
+\bibitem{Nipkow2009}
+Nipkow, T.: Social choice theory in {HOL}. Journal of Automated Reasoning
+  \textbf{43}(3),  289--304 (2009)
+
+\bibitem{PacuitYang2016}
+Pacuit, E., Yang, F.: Dependence and independence in social choice: {Arrow}'s
+  theorem. In: Abramsky, S., Kontinen, J., V\"{a}\"{a}n\"{a}nen, J., Vollmer,
+  H. (eds.) Dependence Logic, pp. 235--260. Springer (2016)
+
+\bibitem{Parikh1985}
+Parikh, R.: The logic of games and its applications. In: Karplnski, M., {van
+  Leeuwen}, J. (eds.) Topics in the Theory of Computation, North-Holland
+  Mathematics Studies, vol.~102, pp. 111--139. North-Holland (1985)
+
+\bibitem{Pauly2008}
+Pauly, M.: On the role of language in social choice theory. Social Choice and
+  Welfare  \textbf{163},  227--243 (2008)
+
+\bibitem{Routley1979}
+Routley, R.: Repairing proofs of {A}rrow's general impossibility theorem and
+  enlarging the scope of the theorem. Notre Dame Journal of Formal Logic
+  \textbf{20}(4),  879--890 (1979)
+
+\bibitem{Rubinstein1984}
+Rubinstein, A.: The single profile analogues to multi profile theorems:
+  {M}athematical logic's approach. International Economic Review
+  \textbf{25}(3),  719--730 (1984)
+
+\bibitem{Schulze2011}
+Schulze, M.: A new monotonic, clone-independent, reversal symmetric, and
+  condorcet-consistent single-winner election method. Social Choice and Welfare
+   \textbf{36},  267--303 (2011)
+
+\bibitem{Sen2017}
+Sen, A.: Collective Choice and Social Welfare: An Expanded Edition. Harvard
+  University Press, Cambridge, Mass. (2017)
+
+\bibitem{Tang2011}
+Tang, P., Lin, F.: Discovering theorems in game theory: {T}wo-person games with
+  unique pure {N}ash equilibrium payoffs. Artificial Intelligence
+  \textbf{175},  2010--2020 (2011)
+
+\bibitem{Taylor2008}
+Taylor, A.D., Pacelli, A.M.: Mathematics and Politics: Strategy, Voting, Power,
+  and Proof. Springer, New York, 2nd edn. (2008)
+
+\bibitem{Tideman1987}
+Tideman, T.N.: Independence of clones as a criterion for voting rules. Social
+  Choice and Welfare  \textbf{4},  185--206 (1987)
+
+\bibitem{TroquardVanDerHoekWooldridge2011}
+Troquard, N., {van der Hoek}, W., Wooldridge, M.: Reasoning about social choice
+  functions. Journal of Philosophical Logic  \textbf{40}(4),  473--498 (2011)
+
+\bibitem{Wiedijk2007}
+Wiedijk, F.: {Arrow}'s impossibility theorem. Formalized Mathematics
+  \textbf{15}(4),  171--174 (2007)
+
+\end{thebibliography}

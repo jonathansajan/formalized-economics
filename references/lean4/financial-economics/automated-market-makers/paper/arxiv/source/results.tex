@@ -1,0 +1,168 @@
+\section{Results}
+\label{sec:results}
+We now present some noteworthy properties of AMMs that we have proven in Lean. 
+
+\Cref{th:ammreachable} ensures that, in any reachable state, there exists an AMM with token types $\tau_0$ and $\tau_1$ if and only if the minted token type $(\tau_0, \tau_1)$ is in circulation, \ie it has a strictly positive supply.
+This result showcases the validity of our model with regards to reasoning about reachable states. 
+Technically, it also allows us to prove that $\code{mintedprice}_s(o, \tau_0, \tau_1)$ is strictly positive for any initialized AMM pair $(\tau_0, \tau_1)$ in any reachable state $s$.
+
+\begin{proposition}[Existence of AMMs \emph{vs.} minted token supply]
+\label{th:ammreachable}
+Let $s' \in \Gamma$ be a reachable blockchain state. 
+Then, for any minted token type $\left(\tau_0, \tau_1\right)$, its supply in $s'$ is strictly positive if and only if $s'$ has an AMM with token types $\tau_0$ and $\tau_1$.
+\end{proposition}
+\begin{proof} By induction on the length of the sequence of transactions leading to $s'$:
+\begin{itemize}
+    
+    \item Base case: empty transaction sequence.
+    % on valid initial state $s$.
+    The proof is trivial for both directions, since a valid starting state has no initialized AMMs and no minted tokens in circulation.
+    
+    \item Inductive case: there are several subcases depending on the last transaction fired in the sequence. 
+    Here we consider the creation of the AMM $(\tau_0',\tau_1')$ in reachable state $s'$.
+    We proceed by cases on the truth of the equality $\left\{\tau_0, \tau_1\right\} = \left\{\tau_0', \tau_1'\right\}$. If it is a different token pair, then the supply remains unchanged along with the initialization status, and we can conclude by the induction hypothesis. If it is the same token pair, then we just incremented its minted token supply (which is non-negative, so after incrementing it, it must be strictly positive), and we just initialized the AMM.
+    
+    \item See source code for the other cases. \href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Trace.lean#L275}{AMMLib/Transaction/Trace.lean:275} 
+    \qedhere
+\end{itemize}
+\end{proof}
+
+\Cref{th:valueexp} allows us to determine the change in the value of a wallet after it has been updated in some way: the resulting equality is the basis for all the subsequent proofs. To illustrate it, we briefly introduce two definitions that have been omitted before: $\code{drain_0}(w_0, \tau_0)$ is the atomic token wallet such that $\code{drain_0}(w_0, \tau_0)(\tau_0) = 0$ and $\code{drain_0}(w_0, \tau_0)(\tau_1) = w_0(\tau_1)$ for every other token $\tau_1 \neq \tau_0$. We define $\code{drain_1}(w_1, (\tau_0, \tau_0)) \in \code{W_1}$ similarly.
+\begin{lemma}[Value expansion]
+  \label{th:valueexp}
+Let $w_0 \in \code{W}_0$, $o_0 \in \code{T} \to \mathbb R_{>0}$, and $\tau_0, \tau_1 \in \code{T}$. Then, 
+$$
+\code{value}\left(w_0, o_0\right) \; = \; w_0(\tau_0)\cdot o(\tau_0) + \code{value}\left(\code{drain_0}(w_0, \tau_0), o_0\right)
+$$
+and, with $w_1 \in \code{W}_1$ and $o_1 \in \code{T^2} \to \mathbb R_{>0}$ such that $o_1(\tau_0, \tau_1) = o_1(\tau_1, \tau_0)$,
+$$
+\code{value}\left(w_1, o_1\right) \; = \; w_1(\tau_0, \tau_1)\cdot o_1(\tau_0, \tau_1) + \code{value}\left(\code{drain_1}(w_1, \tau_0, \tau_1), o_1\right)
+$$  
+\end{lemma}
+\begin{proof} By definition of value and by properties of the sum over a finite support. Full Lean proof at \href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/State/AtomicWall.lean#L116}{AMMLib/State/AtomicWall.lean:116}
+\end{proof}
+
+~\Cref{th:swapgain} gives an explicit formula for the gain obtained by a user upon firing a swap transaction. It is fundamental to all proofs involving gain.
+\begin{lemma}[Gain of a swap]
+\label{th:swapgain}
+Let $sw \in \code{Swap}\left(sx,s,a,\tau_0,\tau_1,x\right)$ and 
+let $o \in \code{T} \to \mathbb R_{>0}$. Then, 
+$$\code{gain}\left(a, o, s, \code{apply} \; sw \right) = \left(sw\code{.y}\cdot o\left(\tau_1\right) - x \cdot o\left(\tau_0\right)\right)
+  \cdot \left(1 - \frac{\left(s\code{.mints} \; a \; \tau_0 \; \tau_1\right)}{\code{mintsupply}_s\left(\tau_0,\tau_1\right)}\right)
+$$
+\end{lemma}
+\begin{proof} By repeated application of \Cref{th:valueexp} in order to isolate the value contributed by the token types involved in the swap, and by use of Mathlib's \code{ring\_nf} simplifier tactic. \href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Swap/Networth.lean#L55}{AMMLib/Transaction/Swap/Networth.lean:55}
+\end{proof}
+
+\Cref{th:swapvsexch} establishes a correspondence between the profitability of a swap transaction (\ie, a positive or negative gain) and the order between the swap rate and the exchange rate given by the price oracle.  
+In particular, assuming a trader $a$ who is not a liquidity provider (\ie, $a$ has no minted tokens for the AMM pair targeted by the swap), \Cref{th:swapvsexch} states that:
+\begin{itemize}
+\item $\code{gain}\left(a, o, s, \code{apply}\;sw\right) < 0 \;\iff\; sx\left(x, r_0, r_1\right) < \nicefrac{o\left(\tau_0\right)}{o\left(\tau_1\right)}$
+\item $\code{gain}\left(a, o, s, \code{apply}\;sw\right) = 0 \;\iff\; sx\left(x, r_0, r_1\right) = \nicefrac{o\left(\tau_0\right)}{o\left(\tau_1\right)}$
+\item $\code{gain}\left(a, o, s, \code{apply}\;sw\right) > 0 \;\iff\; sx\left(x, r_0, r_1\right) > \nicefrac{o\left(\tau_0\right)}{o\left(\tau_1\right)}$
+\end{itemize}
+Technically, to formalize this result it is convenient to  use Mathlib's $\code{cmp}$\footnote{\url{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Init/Data/Ordering/Basic.html\#cmp}}, which gives the order between the two parameters.
+
+\begin{lemma}[Swap rate \emph{vs.}~exchange rate]
+\label{th:swapvsexch}
+Let $sw \in \code{Swap}\left(sx,s,a,\tau_0,\tau_1,x\right)$ be a swap transaction, and let $o \in \code{T} \to \mathbb R_{>0}$ be a price oracle. 
+For $i \in \{0,1\}$, let $r_i = s.\code{amms}.r_i\left(\tau_0,\tau_1\right)$. 
+If $s.\code{mints}\left(a\right)\left(\tau_0,\tau_1\right) = 0$, then 
+$$
+\code{cmp}\left(\code{gain}\left(a, o, s, \code{apply}\;sw\right), 0\right) \; = \; \code{cmp}\left(sx\left(x, r_0, r_1\right), \frac{o\left(\tau_0\right)}{o\left(\tau_1\right)}\right)
+$$
+\end{lemma}
+\begin{proof}
+By algebraic manipulation and application of ~\Cref{th:swapgain}. \href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Swap/Networth.lean#L86}{AMMLib/Transaction/Swap/Networth.lean:86}
+\end{proof}
+
+\Cref{th:swapdirection} establishes that, in a constant-product AMM, there exists only one profitable direction for a swap. Namely, if swapping $\tau_0$ for $\tau_1$ gives a positive gain, then swapping in the other direction (\ie, $\tau_1$ for $\tau_0$) will give a negative gain.
+Note that the inverse does not hold: a negative gain in a direction does not imply a positive gain in the other direction. 
+% although it may be generalized to more swap rate functions that respect certain properties.
+\begin{lemma}[Unique direction for swap gain]
+\label{th:swapdirection}
+Let $sw \in \code{Swap}\left(\code{constprod},s,a,\tau_0,\tau_1,x\right)$ and $sw' \in \code{Swap}\left(\code{constprod},s,a,\tau_1,\tau_0,x'\right)$ be two swap transactions in opposite directions, and let $o \in \code{T} \to \mathbb R_{>0}$.
+If $\code{gain}\left(a, o, s, \code{apply}\; sw\right) > 0$, then $\code{gain}\left(a, o, s, \code{apply}\; sw\right) < 0$.
+\end{lemma}
+\begin{proof}
+By~\Cref{th:swapvsexch}. \href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Swap/Constprod.lean#L160}{AMMLib/Transaction/Swap/Constprod.lean:160}
+\end{proof}
+
+\begin{example}
+\label{ex:results:swapdirection}
+Consider a blockchain state $s$ and atomic tokens $\tau_0$ and $\tau_1$, and assume that: \begin{inlinelist}
+\item $a$ is a trader with no minted tokens, \ie $(s\code{.mints}\;a)\;\tau_0\;\tau_1 = 0$;
+\item the AMM pair for $(\tau_0, \tau_1)$ has been initialized in $s$ and has reserves $r_0 = (s\code{.amms}\;\tau_0\;\tau_1) = 18$ and $r_1 = (s\code{.amms}\;\tau_1\;\tau_0) = 6$;
+\item all the AMMs in $s$ use the constant-product swap rate function;
+\item $o$ is a price oracle such that $o\;\tau_0 = 3$ and $o\;\tau_1 = 4$.
+\end{inlinelist}
+Assume that $a$ wants to sell 6 units of $\tau_1$ for some units of $\tau_0$ with the swap transaction $sw \in \code{Swap}(\code{constprod}, s, a, \tau_1, \tau_0, 6)$. Then, by~\Cref{th:swapgain}, $a$'s gain is given by $9\cdot 3 - 24 = 3 > 0$.
+Coherently with~\Cref{th:swapdirection}, any swap in the opposite direction would give a negative gain: \eg, if $a$ sells 6 units of $\tau_0$, her gain would be $3/2 \cdot 4 - 18 = -12$. 
+% For example, selling $12$ units of $\tau_1$ for $\tau_0$ would also give a gain of $-12$.
+\end{example}
+
+We say that a swap transaction $sw \in \code{Swap}\left(\code{constprod},s,a,\tau_0,\tau_1,x\right)$ is \emph{optimal} for a given price oracle $o$ when, for all $sw' \in \code{Swap}\left(\code{constprod},s,a,\tau_0,\tau_1,x'\right)$ with $x' \neq x$ we have 
+\[
+\code{gain}\left(a, o, s, \code{apply}\; sw'\right) < \code{gain}\left(a, o, s, \code{apply}\; sw\right)
+\]
+
+\Cref{th:suffopt} gives a sufficient condition for the optimality of swaps in constant-product AMMs: it suffices that the ratio of the AMM's reserves after the swap is equal to the exchange rate given by the price oracle.
+Intuitively, the condition in~\Cref{th:suffopt} means that the exchange rate between the two token types induced by the AMM (\ie, the ration between the token reserves) is aligned with the exchange rate given by the price oracle, and so further swaps would yield a negative gain.
+Note that, by definition, if a swap is optimal then it is also unique, \ie swapping any other amount would yield a suboptimal gain.
+
+\begin{theorem}[Sufficient condition for optimal swaps]
+\label{th:suffopt}
+Let $sw \in \code{Swap}\left(\code{constprod},s,a,\tau_0,\tau_1,x\right)$
+be a swap transaction on a constant-product AMM, 
+and let $o \in \code{T} \to \mathbb R_{>0}$ be a price oracle. 
+For $i \in \{0,1\}$,
+let $r_i' = \left(\code{apply}\; sw\right)\code{.amms.r}_i\left(\tau_0,\tau_1\right)$
+be the AMM reserves after the swap.
+If $\nicefrac{r_1'}{r_0'} = \nicefrac{o(\tau_0)}{o(\tau_1)}$, then $sw$ is optimal.
+\end{theorem}
+\begin{proof}
+By cases on $x < x'$ and by application of ~\Cref{th:swapvsexch}. {\href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Swap/Constprod.lean#L184}{AMMLib/Transaction/Swap/Constprod.lean:184}}
+\end{proof}
+
+\begin{example} 
+\label{ex:results:suffopt}
+Under the assumptions of~\Cref{ex:results:suffopt}, the exchange rate between $\tau_1$ and $\tau_0$ given by the price oracle is
+$(o\;\tau_0)/(o\;\tau_1) = 3/4$, while the exchange rate induced by the AMM (\ie, the ratio between the reserves) is $r_1/r_0 = 1/3$.
+Hence, to satisfy the equality in~\Cref{th:suffopt} we must perform a swap that increases $r_1$ and decreases $r_0$, \ie $a$ must sell units of $\tau_1$ to buy units of $\tau_0$, coherently with the necessary condition for a positive gain in~\Cref{ex:results:suffopt}. 
+% It follows that we must surely trade $\tau_1$ for $\tau_0$ to reach the assumption 
+% $r_1'/r_0' = (o\;\tau_0)/(o\;\tau_1)$ of~\Cref{th:suffopt}. 
+\Cref{th:arbitsol} below will establish exactly how many units of $\tau_1$ must be traded.
+\end{example}
+
+\Cref{th:arbitsol} gives an explicit formula for the input amount $x$ that yields an optimal swap transaction for a given AMM pair, under the assumption that the user firing the transaction does not hold the AMM's minted token type.
+The other implicit assumption is that the user $a$ firing the swap has the needed amount $x$ of units of the sold token, \ie $x \leq (s\code{.atoms}\;a)\;\tau_1$. 
+In practice, this assumption can always be satisfied with \emph{flash loans}, which allow $a$ to borrow the amount $x$, perform the swap, and then return the loan in a single, atomic transaction.
+
+\begin{theorem}[Arbitrage for constant-product AMMs]
+\label{th:arbitsol}
+Let $sw \in \code{Swap}\left(\code{constprod},s,a,\tau_0,\tau_1,x\right)$
+be a swap transaction on a constant-product AMM,
+and let $o \in \code{T} \to \mathbb R_{>0}$ be a price oracle.
+For $i \in \{0,1\}$, let $r_i = s\code{.amms.r}_i\left(\tau_0,\tau_1\right)$ be the AMM reserves. 
+If $a$ has no minted tokens (\ie, $s\code{.mints}\left(a\right)\left(\tau_0,\tau_1\right) = 0)$ then $sw$ is optimal if the amount of traded units of $\tau_0$ is:
+\[
+x \; = \; \sqrt{\frac{o(\tau_1)\cdot r_0 \cdot r_1}{o(\tau_0)}} - r_0
+\]
+\end{theorem}
+\begin{proof}
+By algebraic manipulation and~\Cref{th:suffopt}.
+\href{https://github.com/danielepusceddu/lean4-amm/blob/paper/AMMLib/Transaction/Swap/Constprod.lean#L316}{AMMLib/Transaction/Swap/Constprod.lean:316}
+\end{proof}
+
+\begin{example} 
+Under the assumptions of~\Cref{ex:results:suffopt}, we know that to perform a profitable swap the trader must sell units of $\tau_1$, \ie fire a transaction
+$\code{Swap}\left(\code{constprod},s,a,\tau_1,\tau_0,x\right)$.
+\Cref{th:arbitsol} gives the optimal input value $x$, \ie, the number of sold units of $\tau_1$: 
+\[
+x \; = \; \sqrt{\frac{3 \cdot 6 \cdot 18}{4}} \, - \, 6 \; = \; 3
+\] 
+% Hence, the optimal swap is $\code{sw} \in 
+% \code{Swap}\left(\code{constprod},s,a,\tau_1,\tau_0,x\right)$. 
+Then, the output amount is given by $sw\code{.y} = 3 \cdot 18/(6+3) = 6$ and, by~\Cref{th:swapgain}, the gain of $a$ is $6 \cdot 3 - 3 \cdot 4 = 6$, which maximizes it. 
+Note that, in the new state, the exchange rate given by the AMM coincides with that given by the price oracle: $(r_1 + x)(r_0 - sw\code{.y)} = (o\;\tau_0)/(o\;\tau_1)$.
+\end{example}

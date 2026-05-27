@@ -1,28 +1,48 @@
 # Formalized Economics
 
-This repository is an early attempt to organize and build toward an Econlib-style Lean 4 library for economics.
+This repository organizes formalized economics work toward a future
+Econlib-style Lean 4 library.
 
-The first focus is the vNM Utility Theorem in Lean 4, placed under decision theory.
-The second source topic is Formalizing Automated Market Makers in Lean 4, placed under DeFi / financial economics.
-The third source topic is Voting Theory in Lean, placed under social choice / voting theory.
+The current goal is structure first: one canonical `main` branch, one visible
+library skeleton, and clearly separated source archives. Many `Econlib/` files
+are placeholders and do not yet contain completed formalizations.
 
-## Current Structure
+## Repository Layout
 
-- `docs/` contains short research notes and source tracking.
-- `references/` contains original downloaded source material, separated by proof assistant and version where useful.
-- `references/lean4/` is for original Lean 4 source material.
-- `references/lean3/` is for older Lean source material.
-- `Econlib/` contains Econlib-facing Lean 4 files organized by economics area.
+- `Econlib/` contains the future Lean 4-facing library structure.
+- `docs/` contains the human-readable map, topic notes, source summaries, and roadmap.
+- `references/` contains original external papers, source archives, and downloaded code.
 
-## Current Topic
+Original external code stays under `references/`. Cleaned or rewritten
+Econlib-facing Lean 4 work belongs under `Econlib/`.
 
-- Decision theory: vNM Utility Theorem in Lean 4
-- DeFi / financial economics: Formalizing Automated Market Makers in Lean 4
-- Social choice / voting theory: Voting Theory in Lean
+## Current Domains
 
-## Short-Term Plan
+- Decision theory / utility theory
+- Social choice / voting theory
+- Game theory
+- Mechanism design / auctions
+- Welfare economics / general equilibrium
+- Financial economics / DeFi / AMMs
+- Econometrics and statistics-adjacent formalization
+- Meta sources and source hubs
 
-1. Understand the existing vNM, AMM, and voting-theory formalizations.
-2. Record the sources, definitions, dependencies, and open questions.
-3. Keep the repository small and clean while the structure evolves.
-4. Add new topics only when they are ready to be organized.
+## Current Status
+
+The project currently contains:
+
+- a domain-level Econlib skeleton,
+- placeholder files for the initial 25 mapped formalization sources,
+- documentation entries for those sources,
+- archived vNM, AMM, and voting-theory source material collected from earlier work.
+
+Lean, Lake, and Elan are not yet configured locally, so this repository should
+not yet be treated as a buildable Lean package.
+
+## Next Steps
+
+1. Review the structure and source map for accuracy.
+2. Install or choose the Lean 4/Lake toolchain.
+3. Decide the first true Lean 4 implementation target.
+4. Start with a small decision-theory core: finite outcomes, finite lotteries,
+   utility functions, expected utility, and mixture behavior.
